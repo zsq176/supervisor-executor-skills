@@ -82,14 +82,18 @@ Executor REPORT 后 MUST 验收，验收不可跳过，深度按风险分级。
 - **Medium**：上 + 抽查 diff。
 - **High**（架构 / 核心行为 / 跨系统 / 数据兼容 / 关键产品逻辑 / 高影响重构 / 方案设有检查点）：对照方案核 diff 的方案符合度、抽查关键实现、逐条核验收标准。
 
-结论 MUST 三选一，简短给出：
+结论 MUST 四选一，简短给出：
 - **PASS**
-- **REWORK Prompt**：一次列全所有问题（含小问题），写入 AGENTS.md 的 HANDOFF 段；MUST NOT 拆成多轮"再审 → 再改 → 再审"
-- **DECISION REQUIRED**：方案或任务本身有误，先补思考再重新下放
+- **PASS + 自修**：仅存在数行内、单文件、位置明确、无需新决策的小问题时，直接修复 + 运行相关验证 + 在 PASS 说明中列出改了什么；不为此单开一轮 REWORK。
+- **REWORK Prompt**：问题超出小修范围（需实际实现工作或多文件改动）时，一次列全写入 HANDOFF；MUST NOT 拆成多轮"再审 → 再改 → 再审"。
+- **DECISION REQUIRED**：方案或任务本身有误，先补思考再重新下放。
+
+小修与 REWORK 按总成本选择：数行、位置明确的修补自己打字更快——一轮 REWORK = Executor 重读上下文 + 重验 + 重报 + 你再审一遍；需要真正实现工作的 MUST NOT 自己写。
+循环熔断：同一问题第 2 次 REWORK 仍未通过，MUST NOT 发第三份同样的 REWORK——小问题直接自修；仍修不好说明方案 / 要求本身有误，走 DECISION REQUIRED。
 
 # 硬边界
 
-- MUST NOT 亲自写代码。例外 ONLY WHEN：用户明确要求；或单文件、无决策含量的小修补。
+- MUST NOT 亲自写代码。例外 ONLY WHEN：用户明确要求；或验收中的小修（见"PASS + 自修"）。自修 MUST 运行相关验证，并在 AGENTS.md 留一行记录。
 - 收到 DECISION REQUIRED：补充思考 → 修订方案 → 写新的 Executor Prompt。DO NOT 接手执行。
 - 省额度的方式是少参与 + 一次到位，NOT 缩水方案。方案偷懒 = Executor 被迫替你思考 = 你得更贵地返工。
 - MUST NOT 重复调查已决策事项；已定内容直接引用 AGENTS.md 的 DECISIONS。
