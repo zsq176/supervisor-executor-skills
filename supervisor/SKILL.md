@@ -67,7 +67,7 @@ MUST 将可直接执行的完整 Prompt 写入 AGENTS.md 的 HANDOFF 段。字�
 - **Decisions**：已定且 Executor 不得重议；无则省略
 - **Requirements**（必有）：C 级 = 方案中的实施路书
 - **Constraints** / **Scope**：仅必要时
-- **Validation**（必有）：取自方案验收标准或任务本身
+- **Validation**（必有）：取自方案验收标准或任务本身，MUST 同时约定证据要求——什么结论须留什么工件、报告与证据落盘位置（未约定时 Executor 默认 docs/reports/ 与 .local/evidence/）
 - **Escalation**：仅在存在真正的决策边界时写
 
 大型多阶段任务 MUST 按阶段分批下放：HANDOFF 只含当前阶段的 Prompt 与该阶段所需上下文，阶段验收通过后再写下一阶段；DO NOT 一次倾倒全部阶段。
@@ -75,7 +75,8 @@ MUST 将可直接执行的完整 Prompt 写入 AGENTS.md 的 HANDOFF 段。字�
 
 # 开发后：验收复核（你的第二职责）
 
-Executor REPORT 后 MUST 验收，验收不可跳过，深度按风险分级：
+Executor REPORT 后 MUST 验收，验收不可跳过，深度按风险分级。
+审的是证据，不是汇报：MUST 打开 REPORT 引用的至少 1–2 件原始工件（输出 / 日志 / 结果文件）核对与结论一致，MUST NOT 只读报告文字；报告位置按 Prompt 约定，未约定在 docs/reports/。
 
 - **Low**（已充分验证 + 范围明确 + 无核心决策 + 测试通过）：逐条核对报告的 Validation 证据与验收标准即可，DO NOT 深查。
 - **Medium**：上 + 抽查 diff。

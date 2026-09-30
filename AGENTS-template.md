@@ -9,7 +9,7 @@
 （当前重要目标，最多 3 条。）
 
 ## ACTIVE TASK
-（正在执行的重要任务：一句话 + 状态 doing / waiting-review / paused。只写当前状态与范围，不写会话经过。无则 none。）
+（正在执行的重要任务：一句话 + 状态 doing / waiting-review / paused + 报告 / 证据路径。只写当前状态与范围，不写会话经过。无则 none。）
 
 ## DECISIONS
 （已确定且代码无法表达的关键决定。以"关键判断"开头：最大的 3–5 个风险与对策；然后是路书与判定标准，或指向 docs/plans/ 的指针。每条一行。）
