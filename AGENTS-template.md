@@ -9,17 +9,19 @@
 （当前重要目标，最多 3 条。）
 
 ## ACTIVE TASK
-（正在执行的重要任务：一句话 + 状态 doing / waiting-review / paused + 报告 / 证据路径。只写当前状态与范围，不写会话经过。无则 none。）
+（当前可执行单元、状态及报告入口；多单元简记已授权独立项、真实阻塞依赖与解除条件。局部失败/待决/补证不冻结其它独立授权工作。无则 none。）
 
 ## DECISIONS
 （已确定且代码无法表达的关键决定。以"关键判断"开头：最大的 3–5 个风险与对策；然后是路书与判定标准，或指向 docs/plans/ 的指针。每条一行。）
 
 ## CONSTRAINTS
-（持续有效的关键约束。）
+（持续有效的产品、Scope、验收、环境与权限约束；必要前置审查和阶段审批明确，独立推进不扩大授权。）
 
 ## DECISION REQUIRED
-（未解决的升级问题：问题 / 可选方向与依据 / Executor 建议。无则 none。）
+（未解决的决策或累计停滞：期望/实际、所需选择、原REPORT中已尝试机制/累计轮次入口、受影响依赖及仍可继续项。普通明确bug在授权单元连续修复回归，不逐个升级。无则 none。）
 
 ## HANDOFF
-<!-- 完整 Executor Prompt（含 REWORK Prompt）。分阶段下放时只含当前阶段，验收通过后替换为下一阶段。 -->
-（Objective / Plan / Requirements / Constraints / Freedom / Validation / Escalation 按需取舍。）
+<!-- 完整当前任务（含普通返工）。按真实依赖分批，列清已授权独立单元；只等待相关前置审查，不倾倒未授权后续阶段。 -->
+（Objective / Plan / Requirements / Scope / 独立项与依赖 / Validation / Escalation 按需取舍。）
+<!-- Validation保留原门槛/分母：全部改动与原始证据可审核，变更影响路径及实际提交组合验证；工具失败/缺证据不算PASS。 -->
+<!-- Requirements约定范围内明确缺陷连续修复与必要回归、代表样本采集预检及增量证据；同一单元返工计数不因关联子缺陷/换脚本清零。 -->
